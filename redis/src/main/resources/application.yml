@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.230.128/book?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect:
+          org:
+            hibernate.dialect.MySQL5InnoDBDialect
+        hbm2ddl:
+          auto:
+            update
+
+    show-sql: true
+
+  redis:
+    database: 0
+    host: 192.168.230.128
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 5000
+
+
+
