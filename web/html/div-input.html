@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>css3 语法实现div模拟Input</title>
+	<style type="text/css">
+		/* div模拟输入框*/
+		.imitate-input {
+			width: 120px;
+			border: 1px solid dodgerblue;
+			padding: 6px 10px;
+			size: 16px;
+			line-height: 16px;
+			outline: none;
+			color: #000;
+			overflow-x: scroll;
+			overflow-y: hidden;
+			display: inline-block;
+			vertical-align: middle; /*相邻的两个元素中线对齐*/
+			word-break: break-all; /*超出长度允许在单词内换行*/
+			word-wrap: break-word; /*超过长度自动换行*/
+			text-align: left; /*输入框内容从左开始驶入*/
+		}
+
+		/* 清除左右滚动条 */
+		.imitate-input::-webkit-scrollbar { /*清除左右滚动条*/
+			display: none;
+		}
+
+		.imitate-input:empty:before { /*设置placeholder的颜色*/
+			content: attr(placeholder);
+			color: #999;
+		}
+
+		.imitate-input:focus:before {
+			content: none;
+		}
+
+
+		/*解析 H5C3新特性*/
+		/*1.contenteditable 属性是干嘛的呢？
+		 contenteditable 属性定义了是否可编辑元素的内容； true可编辑，false不可编辑
+		 2.outline 轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。
+			outline-color outline-style outline-width
+		 3. css3 新s属性
+			3.1 word-break 、normal使用浏览器默认的换行规则 break-al 允许在单词内换行 keep-all 只能在半角空格或连字符处换行
+			3.2 word-wrap ， normal只在允许的断字点换行（浏览器保持默认处理） break-word 在长单词或 URL 地址内部进行换行
+		 4. css3 新增选择器
+			 4.1 :empty 选择每个没有任何子级的元素
+				 例如： p:empty{background:red;} 指定空的p元素的背景色
+			 4.2 :berfore 选择器再被选元素的内容前面插入内容
+			 例如：p:before{content:'台词';} 在每个p元素的内容之前插入“台词”这两个字
+
+
+		*/
+	</style>
+</head>
+<body>
+<h4>div模拟输入框Input</h4>
+<form>
+	<label>详细地址：</label>
+	<div class="imitate-input" contenteditable="true" placeholder="在此输入内容"></div>
+</form>
+</body>
+</html>
